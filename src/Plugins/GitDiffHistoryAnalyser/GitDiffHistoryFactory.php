@@ -73,4 +73,20 @@ class GitDiffHistoryFactory implements HistoryFactory
     {
         return 'git';
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function newHistoryMarkerFromString(string $historyMarkerAsString): HistoryMarker
+    {
+        return new GitCommit($historyMarkerAsString);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function newCurrentHistoryMarker(ProjectRoot $projectRoot): HistoryMarker
+    {
+        return $this->gitCliWrapper->getCurrentSha($projectRoot);
+    }
 }

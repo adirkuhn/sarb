@@ -32,9 +32,28 @@ interface HistoryFactory
      * Return factory for creating a HistoryMarker from a string representation of it.
      *
      * @return HistoryMarkerFactory
-     * @deprecated 
+     *
+     * @deprecated
      */
     public function newHistoryMarkerFactory(): HistoryMarkerFactory;
+
+    /**
+     * Create HistoryMarker based on the string representation of it.
+     *
+     * @param string $historyMarkerAsString
+     *
+     * @return HistoryMarker
+     */
+    public function newHistoryMarkerFromString(string $historyMarkerAsString): HistoryMarker;
+
+    /**
+     * Return HistoryMarker representing current state of the code.
+     *
+     * @param ProjectRoot $projectRoot
+     *
+     * @return HistoryMarker
+     */
+    public function newCurrentHistoryMarker(ProjectRoot $projectRoot): HistoryMarker;
 
     /**
      * Returns Identifier for HistoryMarker.

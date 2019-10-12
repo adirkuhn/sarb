@@ -11,6 +11,7 @@ use DaveLiddament\StaticAnalysisResultsBaseliner\Domain\HistoryAnalyser\HistoryM
 use DaveLiddament\StaticAnalysisResultsBaseliner\Domain\HistoryAnalyser\HistoryMarkerFactory;
 use DaveLiddament\StaticAnalysisResultsBaseliner\Domain\ResultsParser\UnifiedDiffParser\FileMutations;
 use DaveLiddament\StaticAnalysisResultsBaseliner\Plugins\GitDiffHistoryAnalyser\DiffHistoryAnalyser;
+use DaveLiddament\StaticAnalysisResultsBaseliner\Plugins\GitDiffHistoryAnalyser\GitCommit;
 use DaveLiddament\StaticAnalysisResultsBaseliner\Plugins\GitDiffHistoryAnalyser\GitHistoryMarkerFactory;
 use DaveLiddament\StaticAnalysisResultsBaseliner\Tests\Unit\Plugins\GitDiffHistoryAnalyser\internal\StubGitWrapper;
 
@@ -53,5 +54,21 @@ class StubHistoryFactory implements HistoryFactory
     public function getIdentifier(): string
     {
         return 'stub';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function newHistoryMarkerFromString(string $historyMarkerAsString): HistoryMarker
+    {
+        return new GitCommit($historyMarkerAsString);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function newCurrentHistoryMarker(ProjectRoot $projectRoot): HistoryMarker
+    {
+        return new GitCommit(StubGitWrapper::GIT_SHA_1);
     }
 }
