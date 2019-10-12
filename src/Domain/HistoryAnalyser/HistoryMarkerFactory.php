@@ -14,6 +14,9 @@ namespace DaveLiddament\StaticAnalysisResultsBaseliner\Domain\HistoryAnalyser;
 
 use DaveLiddament\StaticAnalysisResultsBaseliner\Domain\Common\ProjectRoot;
 
+/**
+ * @deprecated Push this into HistoryFactory
+ */
 interface HistoryMarkerFactory
 {
     /**

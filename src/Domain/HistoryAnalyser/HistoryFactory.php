@@ -32,6 +32,7 @@ interface HistoryFactory
      * Return factory for creating a HistoryMarker from a string representation of it.
      *
      * @return HistoryMarkerFactory
+     * @deprecated 
      */
     public function newHistoryMarkerFactory(): HistoryMarkerFactory;
 
