@@ -59,11 +59,9 @@ class GitDiffHistoryFactoryTest extends TestCase
 
     public function testNewHistoryMarkerFactory(): void
     {
-        $historyMarkerFactory = $this->gitDiffHistoryFactory->newHistoryMarkerFactory();
-
         // To check everything is setup correctly we'll call the newCurrentHistoryMarker
         // (SHA set in setup method via the StubGitWrapper)
-        $currentCommit = $historyMarkerFactory->newCurrentHistoryMarker($this->projectRoot);
+        $currentCommit = $this->gitDiffHistoryFactory->newCurrentHistoryMarker($this->projectRoot);
         $this->assertGitCommit(StubGitWrapper::GIT_SHA_1, $currentCommit);
     }
 }

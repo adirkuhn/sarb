@@ -16,7 +16,6 @@ use DaveLiddament\StaticAnalysisResultsBaseliner\Domain\Common\ProjectRoot;
 use DaveLiddament\StaticAnalysisResultsBaseliner\Domain\HistoryAnalyser\HistoryAnalyser;
 use DaveLiddament\StaticAnalysisResultsBaseliner\Domain\HistoryAnalyser\HistoryFactory;
 use DaveLiddament\StaticAnalysisResultsBaseliner\Domain\HistoryAnalyser\HistoryMarker;
-use DaveLiddament\StaticAnalysisResultsBaseliner\Domain\HistoryAnalyser\HistoryMarkerFactory;
 use DaveLiddament\StaticAnalysisResultsBaseliner\Domain\ResultsParser\UnifiedDiffParser\Parser;
 use DaveLiddament\StaticAnalysisResultsBaseliner\Plugins\GitDiffHistoryAnalyser\internal\GitWrapper;
 use Webmozart\Assert\Assert;
@@ -56,14 +55,6 @@ class GitDiffHistoryFactory implements HistoryFactory
         $fileMutations = $this->parser->parseDiff($diff);
 
         return new DiffHistoryAnalyser($fileMutations);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function newHistoryMarkerFactory(): HistoryMarkerFactory
-    {
-        return new GitHistoryMarkerFactory($this->gitCliWrapper);
     }
 
     /**
