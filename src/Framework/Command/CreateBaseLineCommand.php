@@ -109,7 +109,7 @@ class CreateBaseLineCommand extends AbstractCommand
         ProjectRoot $projectRoot
     ): int {
         $historyFactory = $this->historyFactoryLookupService->getHistoryFactory(self::DEFAULT_HISTORY_FACTORY_NAME);
-        $historyMarker = $historyFactory->newHistoryMarkerFactory()->newCurrentHistoryMarker($projectRoot);
+        $historyMarker = $historyFactory->newCurrentHistoryMarker($projectRoot);
         $resultsParser = $this->getResultsParser($input, $output);
 
         $analysisResults = $this->resultsImporter->importFromFile($resultsParser, $resultsFileName, $projectRoot);

@@ -85,7 +85,7 @@ class BaseLineImporter
             $resultsParser = $this->resultsParserLookupService->getResultsParser($resultsParserName);
             $historyFactory = $this->historyFactoryLookupService->getHistoryFactory($historyAnalyserName);
 
-            $historyMarker = $historyFactory->newHistoryMarkerFactory()->newHistoryMarker($historyMarkerAsString);
+            $historyMarker = $historyFactory->newHistoryMarkerFromString($historyMarkerAsString);
             $analysisResults = AnalysisResults::fromArray($analysisResultsAsArray);
 
             return new BaseLine($historyFactory, $analysisResults, $resultsParser, $historyMarker);
