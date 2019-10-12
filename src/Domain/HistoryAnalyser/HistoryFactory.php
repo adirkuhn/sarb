@@ -29,15 +29,6 @@ interface HistoryFactory
     public function newHistoryAnalyser(HistoryMarker $baseLineHistoryMarker, ProjectRoot $projectRoot): HistoryAnalyser;
 
     /**
-     * Return factory for creating a HistoryMarker from a string representation of it.
-     *
-     * @return HistoryMarkerFactory
-     *
-     * @deprecated
-     */
-    public function newHistoryMarkerFactory(): HistoryMarkerFactory;
-
-    /**
      * Create HistoryMarker based on the string representation of it.
      *
      * @param string $historyMarkerAsString
